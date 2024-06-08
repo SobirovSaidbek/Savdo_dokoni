@@ -1,0 +1,408 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="main-content">
+        <div id="wrapper-site">
+            <div id="content-wrapper">
+                <div id="main">
+                    <div class="page-home">
+
+                        <!-- breadcrumb -->
+                        <nav class="breadcrumb-bg">
+                            <div class="container no-index">
+                                <div class="breadcrumb">
+                                    <ol>
+                                        <li>
+                                            <a href="{% url 'pages:home' %}">
+                                                <span>Home</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                                <span>Product Detail</span>
+                                        </li>
+                                    </ol>
+                                </div>
+                            </div>
+                        </nav>
+                        <div class="container">
+                            <div class="content">
+                                <div class="row">
+                                    <div class="sidebar-3 sidebar-collection col-lg-3 col-md-3 col-sm-4">
+
+                                        <!-- category -->
+                                        <div class="sidebar-block">
+                                            <div class="title-block">Categories</div>
+                                            <div class="block-content">
+                                                {% for category in categories %}
+                                                <div class="cateTitle hasSubCategory open level1">
+                                                    <a class="cateItem" href="#">{{ category.name }}</a>
+                                                </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+
+                                        <!-- best seller -->
+                                        <div class="sidebar-block">
+                                            <div class="title-block">
+                                                Best seller
+                                            </div>
+                                            <div class="product-content tab-content">
+                                                <div class="row">
+                                                    {% for product in products %}
+                                                    <div class="item col-md-12">
+                                                        <div class="product-miniature item-one first-item d-flex">
+                                                            <div class="thumbnail-container border">
+                                                                <a href="product-detail.html">
+                                                                    <img class="img-fluid image-cover"
+                                                                         src="{{ product.image1.url }}"
+                                                                         alt="img">
+                                                                    <img class="img-fluid image-secondary"
+                                                                         src="{{ product.image2.url }}"
+                                                                         alt="img">
+                                                                </a>
+                                                            </div>
+                                                            <div class="product-description">
+                                                                <div class="product-groups">
+                                                                    <div class="product-title">
+                                                                        <a href="product-detail.html">
+                                                                            {{ product.name }}
+                                                                        </a>
+                                                                    </div>
+                                                                    <div class="rating">
+                                                                        <div class="star-content">
+                                                                            <div class="star"></div>
+                                                                            <div class="star"></div>
+                                                                            <div class="star"></div>
+                                                                            <div class="star"></div>
+                                                                            <div class="star"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="product-group-price">
+                                                                        <div class="product-price-and-shipping">
+                                                                            <span class="price">${{ product.price }}</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <!-- product tag -->
+                                        <div class="sidebar-block product-tags">
+                                            <div class="title-block">
+                                                Product Tags
+                                            </div>
+                                            <div class="block-content">
+                                                <ul class="listSidebarBlog list-unstyled">
+                                                    {% for tag in tags %}
+                                                    <li>
+                                                        <a href="#" title="Show products matching tag Hot Trend">
+                                                            {{ tag.name }}
+                                                        </a>
+                                                    </li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% for product in products %}
+                                    <div {% if forloop.counter == product.id %} class="col-sm-8 col-lg-9 col-md-9">
+                                        <div class="main-product-detail">
+                                            <h2>{{ product.name }}</h2>
+                                            <div class="product-single row">
+                                                <div class="product-detail col-xs-12 col-md-5 col-sm-5">
+                                                    <div class="page-content" id="content">
+                                                        <div class="images-container">
+                                                            <div class="js-qv-mask mask tab-content border">
+                                                                {% for image in product.images.all %}
+                                                                <div id="item{{ forloop.counter }}" class="tab-pane fade {% if forloop.counter == 1 %}active in show{% endif %}">
+                                                                    <img src="{{ image.image.url }}"
+                                                                         alt="img">
+                                                                </div>
+                                                                {% endfor %}
+                                                                <div class="layer hidden-sm-down" data-toggle="modal"
+                                                                     data-target="#product-modal">
+                                                                    <i class="fa fa-expand"></i>
+                                                                </div>
+                                                            </div>
+                                                            <ul class="product-tab nav nav-tabs d-flex">
+                                                                {% for image in product.images.all %}
+                                                                <li class="col{% if forloop.counter == 1 %} active{% endif %}">
+                                                                    <a href="#item{{ forloop.counter }}" data-toggle="tab"
+                                                                        {% if forloop.counter == 1 %}aria-expanded="true" class="active show"{% endif %}>
+                                                                        <img src="{{ image.image.url }}"
+                                                                             alt="img">
+                                                                    </a>
+                                                                </li>
+                                                                {% endfor %}
+                                                            </ul>
+                                                            <div class="modal fade" id="product-modal" role="dialog">
+                                                                <div class="modal-dialog">
+
+                                                                    <!-- Modal content-->
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <div class="modal-body">
+                                                                                <div class="product-detail">
+                                                                                    <div>
+                                                                                        <div class="images-container">
+                                                                                            <div class="js-qv-mask mask tab-content">
+                                                                                                <div id="modal-item1"
+                                                                                                     class="tab-pane fade active in show">
+                                                                                                    <img src="{% static 'img/product/1.jpg' %}"
+                                                                                                         alt="img">
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <ul class="product-tab nav nav-tabs">
+                                                                                                <li class="active">
+                                                                                                    <a href="#modal-item1"
+                                                                                                       data-toggle="tab"
+                                                                                                       class=" active show">
+                                                                                                        <img src="{% static 'img/product/1.jpg' %}"
+                                                                                                             alt="img">
+                                                                                                    </a>
+                                                                                                </li>
+                                                                                                <li>
+                                                                                                    <a href="#modal-item2"
+                                                                                                       data-toggle="tab">
+                                                                                                        <img src="{% static 'img/product/2.jpg' %}"
+                                                                                                             alt="img">
+                                                                                                    </a>
+                                                                                                </li>
+                                                                                            </ul>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="product-info col-xs-12 col-md-7 col-sm-7">
+                                                    <div class="detail-description">
+                                                        <div class="price-del">
+                                                            {% if product.is_discount %}
+                                                                <span class="price">${{ product.get_price }}</span>
+                                                                <strike>${{ product.price }}</strike>
+                                                            {% else %}
+                                                                <span class="price">${{ product.price }}</span>
+                                                            {% endif %}
+                                                            <span class="float-right">
+                                                                <span class="availb">Availability: </span>
+                                                                {% if product.is_available %}
+                                                                    <span class="check">
+                                                                    <i class="fa fa-check-square-o" aria-hidden="true">
+                                                                    </i>IN STOCK
+                                                                </span>
+                                                                {% else %}
+                                                                    <span class="check">
+                                                                        <i style="color: red" class="fa-solid fa-xmark">NOT IN STOCK</i>
+                                                                </span>
+                                                                {% endif %}
+                                                            </span>
+                                                        </div>
+                                                        <p class="description">{{ product.short_description }}</p>
+                                                        <div class="option has-border d-lg-flex size-color">
+                                                            <div class="size">
+                                                                <span class="size">size :</span>
+                                                                <select>
+                                                                    <option value="">Choose your size</option>
+                                                                    {% for size in product.sizes.all %}
+                                                                        <option value="">{{ size.name }}</option>
+                                                                    {% endfor %}
+                                                                </select>
+                                                            </div>
+                                                            <div class="colors">
+                                                                <b class="title">Color : </b>
+                                                                {% for color in product.colors.all %}
+                                                                    <span style="background-color: {{ color.code }}"
+                                                                          class="blue"></span>
+                                                                {% endfor %}
+                                                            </div>
+                                                        </div>
+                                                        <div class="has-border cart-area">
+                                                            <div class="product-quantity">
+                                                                <div class="qty">
+                                                                    <div class="input-group">
+                                                                        <div class="quantity">
+                                                                            <span class="control-label">QTY : </span>
+                                                                            <input type="text" name="qty"
+                                                                                   id="quantity_wanted" value="1"
+                                                                                   class="input-group form-control">
+
+
+                                                                        </div>
+                                                                        <span class="add">
+                                                                            <button class="btn btn-primary add-to-cart add-item"
+                                                                                    data-button-action="add-to-cart"
+                                                                                    type="submit">
+                                                                                <i class="fa fa-shopping-cart"
+                                                                                   aria-hidden="true"></i>
+                                                                                <span>Add to cart</span>
+                                                                            </button>
+                                                                            <a class="addToWishlist" href="#">
+                                                                                <i class="fa fa-heart"
+                                                                                   aria-hidden="true"></i>
+                                                                            </a>
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="clearfix"></div>
+                                                            <p class="product-minimal-quantity">
+                                                            </p>
+                                                        </div>
+                                                        <div class="d-flex2 has-border">
+                                                            <div class="btn-group">
+                                                                <a href="#">
+                                                                    <i class="zmdi zmdi-share"></i>
+                                                                    <span>Share</span>
+                                                                </a>
+                                                                <a href="#" class="email">
+                                                                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                                                                    <span>SEN TO A FRIEND</span>
+                                                                </a>
+                                                                <a href="#" class="print">
+                                                                    <i class="zmdi zmdi-print"></i>
+                                                                    <span>Print</span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="rating-comment has-border d-flex">
+                                                            <div class="review-description d-flex">
+                                                                <span>REVIEW :</span>
+                                                                <div class="rating">
+                                                                    <div class="star-content">
+                                                                        <div class="star"></div>
+                                                                        <div class="star"></div>
+                                                                        <div class="star"></div>
+                                                                        <div class="star"></div>
+                                                                        <div class="star"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="read after-has-border">
+                                                                <a href="#review">
+                                                                    <i class="fa fa-commenting-o color"
+                                                                       aria-hidden="true"></i>
+                                                                    <span>READ REVIEWS (3)</span>
+                                                                </a>
+                                                            </div>
+                                                            <div class="apen after-has-border">
+                                                                <a href="#review">
+                                                                    <i class="fa fa-pencil color"
+                                                                       aria-hidden="true"></i>
+                                                                    <span>WRITE A REVIEW</span>
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="content">
+                                                            <p>SKU :
+                                                                <span class="content2">
+                                                                    <a href="#">{{ product.sku }}</a>
+                                                                </span>
+                                                            </p>
+                                                            <p>Categories :
+                                                                <span class="content2">
+                                                                    {% for cat in product.categories.all %}
+                                                                    <a href="#">{{ cat.name }}</a>,
+                                                                    {% endfor %}
+                                                                </span>
+                                                            </p>
+                                                            <p>tags :
+                                                                <span class="content2">
+                                                                    {% for tag in product.tags.all %}
+                                                                    <a href="#">{{ tag.name }}</a>,
+                                                                    {% endfor %}
+                                                                </span>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="review">
+                                                <ul class="nav nav-tabs">
+                                                    <li class="active">
+                                                        <a data-toggle="tab" href="#description" class="active show">Description</a>
+                                                    </li>
+
+                                                    <li>
+                                                        <a data-toggle="tab" href="#review">Reviews (2)</a>
+                                                    </li>
+                                                </ul>
+
+                                                <div class="tab-content">
+                                                    <div id="description" class="tab-pane fade in active show">
+                                                        <p>{{ product.long_description }}
+                                                        </p>
+                                                    </div>
+
+                                                    <div id="review" class="tab-pane fade">
+                                                        <div class="spr-form">
+                                                            <div class="user-comment">
+                                                                {% for comment in comments %}
+                                                                <div class="spr-review">
+                                                                    <div class="spr-review-header">
+                                                                        <span class="spr-review-header-byline">
+                                                                            <strong>{{ comment.user.first_name }} {{ comment.user.last_name }}</strong> -
+                                                                            <span>{{ comment.created_at|date }}</span>
+                                                                        </span>
+                                                                    </div>
+                                                                    <div class="spr-review-content">
+                                                                        <p class="spr-review-content-body">
+                                                                            {{ comment.message }}
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                                {% endfor %}
+                                                            </div>
+                                                        </div>
+                                                        <form method="post" action="{% url 'products:comment' pk=product.id %}?next={{ request.get_full_path|urlencode }}" class="new-review-form">
+                                                            {% csrf_token %}
+                                                            <input type="hidden" name="review[rating]" value="3">
+                                                            <input type="hidden" name="product_id">
+                                                            <h3 class="spr-form-title">Write a review</h3>
+                                                            <fieldset class="spr-form-contact">
+                                                            </fieldset>
+                                                            <fieldset>
+                                                                <div class="spr-form-review-body">
+                                                                    <div class="spr-form-input">
+                                                                        <textarea class="spr-form-input-textarea"
+                                                                                  rows="10"
+                                                                                  placeholder="Write your comments here"
+                                                                        name="message">
+
+                                                                        </textarea>
+                                                                    </div>
+                                                                </div>
+                                                            </fieldset>
+                                                            <div class="submit">
+                                                                <input type="submit" name="addComment"
+                                                                       id="submitComment" class="btn btn-default"
+                                                                       value="Submit Review">
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    </div>
+                                    {% endif %}
+                                {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
