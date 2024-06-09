@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 {% load my_tags %}
 <header>
     <!-- header left mobie -->
@@ -106,16 +107,16 @@
                     <div class="menu navbar collapse navbar-collapse">
                         <ul class="menu-top navbar-nav">
                             <li {% if request.path == '/' %} class="nav-link" {% endif %}>
-                                <a href="{% url 'pages:home' %}" class="parent">Home</a>
+                                <a href="{% url 'pages:home' %}" class="parent">{% trans 'Home' %}</a>
                             </li>
                             <li {% if request.path == '/blogs/' %} class="nav-link" {% endif %}>
-                                <a href="{% url 'blogs:list' %}" class="parent">Blog</a>
+                                <a href="{% url 'blogs:list' %}" class="parent">{% trans 'Blog' %}</a>
                             </li>
                             <li {% if request.path == '/products/' %} class="nav-link" {% endif %}>
-                                <a href="{% url 'products:list' %}" class="parent">Products</a>
+                                <a href="{% url 'products:list' %}" class="parent">{% trans 'Products' %}</a>
                             </li>
                             <li {% if request.path == '/contact/' %} class="nav-link" {% endif %}>
-                                <a href="{% url 'pages:contact' %}" class="parent">Contact US</a>
+                                <a href="{% url 'pages:contact' %}" class="parent">{% trans 'Contact US' %}</a>
                             </li>
                         </ul>
                     </div>
@@ -158,7 +159,7 @@
                                     <a class="login" href="{% url 'orders:history' %}" rel="nofollow"
                                        title="Log in to your customer account">
                                         <i class="fa fa-cog"></i>
-                                        <span>My History</span>
+                                        <span>{% trans 'My History' %}</span>
                                     </a>
                                 </div>
                                 {% endif %}
@@ -167,13 +168,13 @@
                                     <a class="login" href="{% url 'users:logout' %}" rel="nofollow"
                                        title="Log in to your customer account">
                                         <i class="fa fa-sign-in"></i>
-                                        <span>Sign Out</span>
+                                        <span>{% trans 'Sign Out' %}</span>
                                     </a>
                                     {% else %}
                                     <a class="login" href="{% url 'users:login' %}" rel="nofollow"
                                        title="Log in to your customer account">
                                         <i class="fa fa-sign-in"></i>
-                                        <span>Sign in</span>
+                                        <span>{% trans 'Sign in' %}</span>
                                     </a>
                                     {% endif %}
                                 </div>

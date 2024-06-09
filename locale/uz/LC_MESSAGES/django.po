@@ -22,196 +22,196 @@ msgstr ""
 #: .\products\models.py:9 .\products\models.py:23 .\products\models.py:37
 #: .\products\models.py:52 .\products\models.py:66 .\products\models.py:84
 msgid "name"
-msgstr ""
+msgstr "nomi"
 
 #: .\blogs\models.py:9
 msgid "position"
-msgstr ""
+msgstr "pozitsiya"
 
 #: .\blogs\models.py:10 .\pages\models.py:26
 msgid "profession"
-msgstr ""
+msgstr "kasb"
 
 #: .\blogs\models.py:19
 msgid "author"
-msgstr ""
+msgstr "muallif"
 
 #: .\blogs\models.py:20
 msgid "authors"
-msgstr ""
+msgstr "mualliflar"
 
 #: .\blogs\models.py:33
 msgid "category"
-msgstr ""
+msgstr "kategoriya"
 
 #: .\blogs\models.py:34
 msgid "categories"
-msgstr ""
+msgstr "kategoriyalar"
 
 #: .\blogs\models.py:47
 msgid "tag"
-msgstr ""
+msgstr "teg"
 
 #: .\blogs\models.py:48
 msgid "tags"
-msgstr ""
+msgstr "teglar"
 
 #: .\blogs\models.py:52
 msgid "title"
-msgstr ""
+msgstr "sarlavha"
 
 #: .\blogs\models.py:54
 msgid "short_info"
-msgstr ""
+msgstr "qisqacha ma'lumot"
 
 #: .\blogs\models.py:68
 msgid "blog"
-msgstr ""
+msgstr "blog"
 
 #: .\blogs\models.py:69
 msgid "blogs"
-msgstr ""
+msgstr "bloglar"
 
 #: .\orders\models.py:21
 msgid "Order"
-msgstr ""
+msgstr "buyurtma"
 
 #: .\orders\models.py:22
 msgid "Orders"
-msgstr ""
+msgstr "buyurtmalar"
 
 #: .\orders\models.py:28
 msgid "product_name"
-msgstr ""
+msgstr "mahsulot nomi"
 
 #: .\orders\models.py:31
 msgid "size"
-msgstr ""
+msgstr "hajmi"
 
 #: .\orders\models.py:39
 msgid "order item"
-msgstr ""
+msgstr "buyurtma elementi"
 
 #: .\orders\models.py:40
 msgid "orders items"
-msgstr ""
+msgstr "buyurtam elementlari"
 
 #: .\pages\models.py:9
 msgid "subject"
-msgstr ""
+msgstr "mavzu"
 
 #: .\pages\models.py:10
 msgid "message"
-msgstr ""
+msgstr "xabar"
 
 #: .\pages\models.py:19
 msgid "contact"
-msgstr ""
+msgstr "aloqa"
 
 #: .\pages\models.py:20
 msgid "contacts"
-msgstr ""
+msgstr "aloqalar"
 
 #: .\pages\models.py:25
 msgid "comment"
-msgstr ""
+msgstr "izoh"
 
 #: .\pages\models.py:36
 msgid "User Comment"
-msgstr ""
+msgstr "Foydalanuvchi izohi"
 
 #: .\pages\models.py:37
 msgid "User Comments"
-msgstr ""
+msgstr "Foydalanuvchi izohlari"
 
 #: .\products\models.py:18
 msgid "Product Category"
-msgstr ""
+msgstr "mahsulot toyfasi"
 
 #: .\products\models.py:19
 msgid "Product Categories"
-msgstr ""
+msgstr "mahsulot toyfaslari"
 
 #: .\products\models.py:32
 msgid "Product Tag"
-msgstr ""
+msgstr "mahsulot yorlig'i"
 
 #: .\products\models.py:33
 msgid "Product Tags"
-msgstr ""
+msgstr "mahsulot yorlig'lari"
 
 #: .\products\models.py:47
 msgid "Product Color"
-msgstr ""
+msgstr "mahsulot rangi"
 
 #: .\products\models.py:48
 msgid "Product Colors"
-msgstr ""
+msgstr "mahsulot ranglari"
 
 #: .\products\models.py:61
 msgid "Product Size"
-msgstr ""
+msgstr "mahsulot hajmi"
 
 #: .\products\models.py:62
 msgid "Product Sizes"
-msgstr ""
+msgstr "mahsulot hajimlar"
 
 #: .\products\models.py:76
 msgid "Product Manufacture"
-msgstr ""
+msgstr "mahsulot ishlab chiqarish"
 
 #: .\products\models.py:77
 msgid "Product Manufactures"
-msgstr ""
+msgstr "mahsulot ishlab chiqarishlari"
 
 #: .\products\models.py:85
 msgid "long_description"
-msgstr ""
+msgstr "uzoq tavsif"
 
 #: .\products\models.py:86
 msgid "short_description"
-msgstr ""
+msgstr "qisqa tavsif"
 
 #: .\products\models.py:122
 msgid "Product"
-msgstr ""
+msgstr "mahsulot"
 
 #: .\products\models.py:123
 msgid "Products"
-msgstr ""
+msgstr "mahsulotlar"
 
 #: .\products\models.py:154
 msgid "Comment"
-msgstr ""
+msgstr "izoh"
 
 #: .\products\models.py:155
 msgid "Comments"
-msgstr ""
+msgstr "izohlar"
 
 #: .\users\models.py:18
 msgid "Verification Code"
-msgstr ""
+msgstr "tasdiq kodi"
 
 #: .\users\models.py:19
 msgid "Verification Codes"
-msgstr ""
+msgstr "tasqid kodlari"
 
 #: .\users\models.py:24
 msgid "full_name"
-msgstr ""
+msgstr "To'liq ism"
 
 #: .\users\models.py:25
 msgid "company"
-msgstr ""
+msgstr "kompanya"
 
 #: .\users\models.py:26
 msgid "city"
-msgstr ""
+msgstr "shahar"
 
 #: .\users\models.py:27
 msgid "address"
-msgstr ""
+msgstr "mazil"
 
 #: .\users\models.py:29
 msgid "phone"
-msgstr ""
+msgstr "Telfon Raqam"
